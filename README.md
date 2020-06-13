@@ -1,5 +1,7 @@
 # Super Waffle
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cb0ebf49b1f64a1b881ad134f981cda3)](https://app.codacy.com/manual/paskudnyprogramista/super_waffle?utm_source=github.com&utm_medium=referral&utm_content=paskudnyprogramista/super_waffle&utm_campaign=Badge_Grade_Dashboard)
+
 Happy RESTfull API made with :heart:!
 
 ## Prerequisites
