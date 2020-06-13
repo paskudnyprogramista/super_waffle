@@ -35,3 +35,7 @@ module SuperWaffle
     config.api_only = true
   end
 end
+
+Raven.configure do |config|
+  config.dsn = Rails.application.credentials.dig(Rails.env.to_sym, :sentry, :dns)
+end
