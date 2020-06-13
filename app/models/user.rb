@@ -5,7 +5,7 @@ class User < ApplicationRecord
     validates :name
     validates :username
     validates :website
-    validates :phone, presence: true
+    validates :phone
   end
 
   validates :email, presence: true, uniqueness: true
