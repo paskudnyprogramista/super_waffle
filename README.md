@@ -1,12 +1,16 @@
 # Super Waffle
 
-## Installation
+Happy RESTfull API made with :heart:!
+
+## Prerequisites
+
+### Dependencies
 
 To install dependencies:
 
 `$ bundle install`
 
-## Database
+### Database
 
 To setup you database:
 
@@ -23,3 +27,11 @@ To start your app:
 Te test your app:
 
 `$ bundle exec rspec`
+
+## Code review and code analytics
+
+Code is being monitored and reviewed by [Codacy](https://www.codacy.com)
+
+## Logging and error tracking
+
+App is being monitored by [Sentry](https://sentry.io)
