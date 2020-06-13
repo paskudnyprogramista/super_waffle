@@ -9,4 +9,6 @@ class User < ApplicationRecord
   end
 
   validates :email, presence: true, uniqueness: true
+
+  belongs_to :company, class_name: 'Company'
 end
