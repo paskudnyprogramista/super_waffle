@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_13_230246) do
+ActiveRecord::Schema.define(version: 2020_06_13_231805) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2020_06_13_230246) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "geos", force: :cascade do |t|
+    t.integer "lat"
+    t.integer "lng"
+    t.integer "address_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["address_id"], name: "index_geos_on_address_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
@@ -45,5 +54,6 @@ ActiveRecord::Schema.define(version: 2020_06_13_230246) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "geos", "addresses"
   add_foreign_key "users", "companies"
 end
