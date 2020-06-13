@@ -1,24 +1,25 @@
-# README
+# Super Waffle
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+To install dependencies:
 
-* Ruby version
+`$ bundle install`
 
-* System dependencies
+## Database
 
-* Configuration
+To setup you database:
 
-* Database creation
+`$ bundle exec rails db:setup`
 
-* Database initialization
+## Server
 
-* How to run the test suite
+To start your app:
 
-* Services (job queues, cache servers, search engines, etc.)
+`$ bundle exec rails s`
 
-* Deployment instructions
+## Test
 
-* ...
+Te test your app:
+
+`$ bundle exec rspec`
