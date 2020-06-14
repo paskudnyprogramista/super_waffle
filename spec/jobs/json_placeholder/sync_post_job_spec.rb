@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe JsonPlaceholder::SyncAddressJob, type: :job do
+RSpec.describe JsonPlaceholder::SyncPostJob, type: :job do
   include ActiveJob::TestHelper
 
   describe '.perform_later' do

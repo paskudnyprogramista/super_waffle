@@ -1,31 +1,19 @@
 # frozen_string_literal: true
 
-require 'json_placeholder/api'
+require 'json_placeholder/endpoints'
 
 module JsonPlaceholder
   class ApiClient
-    def initialize
-      self
-    end
-
     def users
-      JsonPlaceholder::Api::User.all(self)
-    end
-
-    def companies
-      JsonPlaceholder::Api::Company.all(self)
-    end
-
-    def addresses
-      JsonPlaceholder::Api::Address.all(self)
+      JsonPlaceholder::Endpoints::User.all
     end
 
     def posts
-      JsonPlaceholder::Api::Post.all(self)
+      JsonPlaceholder::Endpoints::Post.all
     end
 
     def comments
-      JsonPlaceholder::Api::Comment.all(self)
+      JsonPlaceholder::Endpoints::Comment.all
     end
   end
 end

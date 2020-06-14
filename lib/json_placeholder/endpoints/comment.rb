@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 
 module JsonPlaceholder
-  module Api
+  module Endpoints
     class Comment
-      def initialize(client)
-        @client = client
-      end
-
       class << self
-        def all(_client)
-          []
+        def all
+          JsonPlaceholder::Request.new.get('comments')
         end
       end
     end

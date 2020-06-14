@@ -3,7 +3,7 @@
 require 'json_placeholder/api_client'
 
 module JsonPlaceholder
-  class SyncCommentJob < ApplicationJob
+  class SyncPostJob < ApplicationJob
     queue_as :default
 
     def perform(*_args); end
