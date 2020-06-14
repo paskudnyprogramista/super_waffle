@@ -31,7 +31,7 @@
         - ruby/rspec-test
   workflows:
     version: 2
-    build_and_test:
+    build_analyze_and_test:
         jobs:
           - build
           - analyze:
