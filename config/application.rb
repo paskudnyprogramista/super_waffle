@@ -39,5 +39,5 @@ module SuperWaffle
 end
 
 Raven.configure do |config|
-  config.dsn = Rails.application.credentials.dig(Rails.env.to_sym, :sentry, :dns)
+  config.dsn = Rails.application.credentials.sentry.fetch(:dns)
 end
