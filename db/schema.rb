@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_094423) do
+ActiveRecord::Schema.define(version: 2020_06_14_100108) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2020_06_14_094423) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "name"
+    t.text "body"
+    t.string "email"
+    t.integer "post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -63,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_094423) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "comments", "posts"
   add_foreign_key "geos", "addresses"
   add_foreign_key "posts", "users"
   add_foreign_key "users", "companies"

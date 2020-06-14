@@ -6,5 +6,5 @@ class Geo < ApplicationRecord
     validates :lng
   end
 
-  belongs_to :address, class_name: 'Address'
+  belongs_to :address
 end
