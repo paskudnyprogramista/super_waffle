@@ -31,6 +31,24 @@ Te test your app:
 
 `$ bundle exec rspec`
 
+## Synchronization with JSONPlaceholder API
+
+In order to start synchronization between Super Waffle and JSONPlaecholder, you need to add following cron jobs to your crontab:
+
+```bash
+0 * * * * /bin/bash -l -c 'cd /super_waffle && RAILS_ENV=<environment> bundle exec rake background_jobs:schedule_jsonplaceholder_users_sync'
+```
+
+```bash
+0 * * * * /bin/bash -l -c 'cd /super_waffle && RAILS_ENV=<environment> bundle exec rake background_jobs:schedule_jsonplaceholder_posts_sync'
+```
+
+```bash
+0 * * * * /bin/bash -l -c 'cd /super_waffle && RAILS_ENV=<environment> bundle exec rake background_jobs:schedule_jsonplaceholder_comments_sync'
+```
+
+Above examples will be run every 1 hour, but you can change that if you choose to.
+
 ## Continuous Integration
 
 Automated tests are run by [CircleCI](https://circleci.com)
