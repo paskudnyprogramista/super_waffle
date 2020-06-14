@@ -1,7 +1,7 @@
 ---
   version: 2.1
   orbs:
-    ruby: circleci/ruby1.0.0
+    ruby: circleci/ruby@1.0.0
   jobs:
     build:
       docker:
@@ -34,7 +34,7 @@
     build_and_test:
         jobs:
           - build
-          - analyze
+          - analyze:
               requires:
                 - build
           - test:
