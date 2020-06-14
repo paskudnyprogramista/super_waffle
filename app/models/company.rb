@@ -6,4 +6,6 @@ class Company < ApplicationRecord
     validates :catchphrase
     validates :bs
   end
+
+  has_many :users, dependent: :nullify
 end
