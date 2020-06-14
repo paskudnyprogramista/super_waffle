@@ -1,7 +1,7 @@
 ---
   version: 2.1
   orbs:
-    ruby: circleci/ruby@0.1.2
+    ruby: circleci/ruby1.0.0
   jobs:
     build:
       docker:
@@ -10,10 +10,16 @@
             RAILS_ENV: test
       steps:
         - checkout
-        - run:
-            name: Which bundler?
-            command: bundle -v
-        - ruby/bundle-install
+        - ruby/install-deps
+    analyze:
+      docker:
+        - image: circleci/ruby:2.7.0
+          environment:
+            RAILS_ENV: test
+      steps:
+        - checkout
+        - ruby/install-deps
+        - run: bundle exec rubocop
     test:
       docker:
         - image: circleci/ruby:2.7.0
@@ -21,18 +27,16 @@
             RAILS_ENV: test
       steps:
         - checkout
-        - run:
-            name: Which bundler?
-            command: bundle -v
-        - ruby/bundle-install
-        - run:
-            name: Run RSpec
-            command: bundle exec rspec
+        - ruby/install-deps
+        - ruby/rspec-test
   workflows:
     version: 2
     build_and_test:
         jobs:
           - build
+          - analyze
+              requires:
+                - build
           - test:
               requires:
                 - build
