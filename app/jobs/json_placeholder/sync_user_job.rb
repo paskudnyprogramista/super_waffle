@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'json_placeholder/api_client'
-
 module JsonPlaceholder
   class SyncUserJob < ApplicationJob
     queue_as :default
 
-    def perform(*_args); end
+    def perform(user_data)
+      Rails.logger.debug user_data
+    end
   end
 end
