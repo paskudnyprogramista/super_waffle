@@ -1,11 +1,31 @@
 # frozen_string_literal: true
 
-namespace :background_jobs do
-  desc 'Schedule synchronization JSONPlaceholder data job '
-  task schedule_sync_jsonplaceholder_data: :environment do
-    puts 'Schedule Job...'
+require 'json_placeholder/api_client'
 
-    # Do something later
+namespace :background_jobs do
+  desc 'Schedule JSONPlaceholder data synchronization for Users'
+  task schedule_jsonplaceholder_users_sync: :environment do
+    puts 'Schedule Jobs...'
+
+    JsonPlaceholder::SyncUserJob.perform_later
+
+    puts 'Done.'
+  end
+
+  desc 'Schedule JSONPlaceholder data synchronization for Posts'
+  task schedule_jsonplaceholder_posts_sync: :environment do
+    puts 'Schedule Jobs...'
+
+    JsonPlaceholder::SyncPostJob.perform_later
+
+    puts 'Done.'
+  end
+
+  desc 'Schedule JSONPlaceholder data synchronization for Comments'
+  task schedule_jsonplaceholder_comments_sync: :environment do
+    puts 'Schedule Jobs...'
+
+    JsonPlaceholder::SyncCommentJob.perform_later
 
     puts 'Done.'
   end
