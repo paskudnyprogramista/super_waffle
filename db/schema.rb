@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_100108) do
+ActiveRecord::Schema.define(version: 2020_06_15_130759) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2020_06_14_100108) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "geo_id"
+    t.index ["geo_id"], name: "index_addresses_on_geo_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -44,10 +46,8 @@ ActiveRecord::Schema.define(version: 2020_06_14_100108) do
   create_table "geos", force: :cascade do |t|
     t.integer "lat"
     t.integer "lng"
-    t.integer "address_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["address_id"], name: "index_geos_on_address_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -72,9 +72,9 @@ ActiveRecord::Schema.define(version: 2020_06_14_100108) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "addresses", "geos"
   add_foreign_key "addresses", "users"
   add_foreign_key "comments", "posts"
-  add_foreign_key "geos", "addresses"
   add_foreign_key "posts", "users"
   add_foreign_key "users", "companies"
 end

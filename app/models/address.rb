@@ -9,4 +9,5 @@ class Address < ApplicationRecord
   end
 
   belongs_to :user
+  belongs_to :geo
 end

@@ -10,4 +10,6 @@ RSpec.describe Address, type: :model do
 
   it { should belong_to(:user) }
   it { should have_db_index(:user_id) }
+  it { should belong_to(:geo) }
+  it { should have_db_index(:geo_id) }
 end

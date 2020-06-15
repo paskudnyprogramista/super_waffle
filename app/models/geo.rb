@@ -5,6 +5,4 @@ class Geo < ApplicationRecord
     validates :lat
     validates :lng
   end
-
-  belongs_to :address
 end
