@@ -4,9 +4,7 @@ require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
 RSpec.describe JsonPlaceholder::UserDataMapper, type: :data_mapper do
-  # rubocop:enable Metrics/BlockLength
-
-  subject { described_class.new.call(data) }
+  subject(:user_model) { described_class.new.call(data) }
 
   let(:data) do
     {
@@ -25,7 +23,15 @@ RSpec.describe JsonPlaceholder::UserDataMapper, type: :data_mapper do
   end
 
   describe '.call' do
-    context 'with invalid data resource' do
+    let(:valid_company_data_part) do
+      {
+        name: 'Romaguera-Crona',
+        catchphrase: 'Multi-layered client-server neural-net',
+        bs: 'harness real-time e-markets'
+      }
+    end
+
+    context 'with invalid key in data resource' do
       let(:data) do
         {
           "id": 1,
@@ -46,12 +52,21 @@ RSpec.describe JsonPlaceholder::UserDataMapper, type: :data_mapper do
       include_examples 'should raise unknown attribute error'
     end
 
+    it 'maintains data integrity in User model' do
+      expect(user_model).to have_attributes(data.except!(:company))
+    end
+
     it 'returns User model' do
-      expect(subject).to be_a(User)
+      expect(user_model).to be_a(User)
+    end
+
+    it 'maintains data integrity in Company model' do
+      expect(user_model.company).to have_attributes(valid_company_data_part)
     end
 
     it 'build Company model' do
-      expect(subject.company).to be_a(Company)
+      expect(user_model.company).to be_a(Company)
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

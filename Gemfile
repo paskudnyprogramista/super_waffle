@@ -30,6 +30,8 @@ gem 'http'
 
 gem 'dry-transformer'
 
+gem 'dry-monads'
+
 gem 'oj'
 
 group :development, :test do
@@ -53,6 +55,8 @@ end
 
 group :test do
   gem 'shoulda-matchers'
+
+  gem 'rubocop-rspec', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
