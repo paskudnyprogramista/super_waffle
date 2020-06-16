@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.configure do |config|
-  config.before(:each) do
+  config.before do
     stub_request(:get, 'https://jsonplaceholder.typicode.com/users')
       .with(
         headers: {

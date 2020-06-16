@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Company, type: :model do
-  it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:catchphrase) }
-  it { should validate_presence_of(:bs) }
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:catchphrase) }
+  it { is_expected.to validate_presence_of(:bs) }
 
-  it { should have_many(:users) }
+  it { is_expected.to have_many(:users) }
 end

@@ -3,13 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe Address, type: :model do
-  it { should validate_presence_of(:street) }
-  it { should validate_presence_of(:suite) }
-  it { should validate_presence_of(:city) }
-  it { should validate_presence_of(:zip) }
+  it { is_expected.to validate_presence_of(:street) }
+  it { is_expected.to validate_presence_of(:suite) }
+  it { is_expected.to validate_presence_of(:city) }
+  it { is_expected.to validate_presence_of(:zip) }
 
-  it { should belong_to(:user) }
-  it { should have_db_index(:user_id) }
-  it { should belong_to(:geo) }
-  it { should have_db_index(:geo_id) }
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to have_db_index(:user_id) }
+  it { is_expected.to belong_to(:geo) }
+  it { is_expected.to have_db_index(:geo_id) }
 end
