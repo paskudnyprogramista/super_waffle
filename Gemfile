@@ -43,6 +43,8 @@ group :development, :test do
   gem 'faker'
 
   gem 'rspec_junit_formatter', '~> 0.2.3'
+
+  gem 'webmock'
 end
 
 group :development do
