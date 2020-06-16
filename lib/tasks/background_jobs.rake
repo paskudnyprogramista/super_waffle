@@ -6,13 +6,12 @@ require 'json_placeholder/api_client'
 namespace :background_jobs do
   desc 'Schedule JSONPlaceholder data synchronization for Users'
   task schedule_jsonplaceholder_users_sync: :environment do
-    Rails.logger.info 'Schedule Sync User and Address Jobs...'
+    Rails.logger.info 'Schedule Sync User, Company and Address Jobs...'
 
     # TODO: Impl module responsible for handling big sized array ofda
     users_data = JsonPlaceholder::ApiClient.new.users
     users_data.each do |user_data|
       address_data = user_data.extract!(:address).fetch(:address, {})
-
       # TODO: change perform_now, to perform_later
       JsonPlaceholder::SyncUserJob.perform_now(user_data)
       JsonPlaceholder::SyncAddressJob.perform_now(address_data)
