@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_130759) do
+ActiveRecord::Schema.define(version: 2020_06_16_143103) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2020_06_15_130759) do
   end
 
   create_table "geos", force: :cascade do |t|
-    t.integer "lat"
-    t.integer "lng"
+    t.decimal "lat", precision: 15, scale: 10
+    t.decimal "lng", precision: 15, scale: 10
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
