@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_211313) do
+ActiveRecord::Schema.define(version: 2020_06_18_213310) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_06_18_211313) do
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "orig_post_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
