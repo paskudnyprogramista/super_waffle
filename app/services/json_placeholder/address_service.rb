@@ -12,11 +12,14 @@ module JsonPlaceholder
       # - Move to base class
       def populate(address_data)
         mapped_address_model = map_address_data(address_data)
-        address = find_address(mapped_address_model.id)
+        address = find_address(mapped_address_model.orig_user_id)
 
         if address
           address.update!(build_attributes_for_update(mapped_address_model))
         else
+          user = find_user(mapped_address_model.orig_user_id)
+
+          mapped_address_model.user = user
           mapped_address_model.save!
         end
 
@@ -37,7 +40,11 @@ module JsonPlaceholder
       end
 
       def find_address(id)
-        Address.find_by(id: id)
+        Address.find_by(orig_user_id: id)
+      end
+
+      def find_user(id)
+        User.find_by(orig_user_id: id)
       end
     end
   end

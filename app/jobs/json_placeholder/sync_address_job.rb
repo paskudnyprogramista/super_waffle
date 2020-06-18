@@ -5,7 +5,7 @@ module JsonPlaceholder
     queue_as :default
 
     def perform(address_data)
-      JsonPlaceholder::AddressDataMapper.new.call(address_data)
+      JsonPlaceholder::AddressService.populate(address_data)
     end
   end
 end
