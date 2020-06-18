@@ -12,5 +12,7 @@ class User < ApplicationRecord
 
   belongs_to :company
 
+  has_many :posts, dependent: :nullify
+
   accepts_nested_attributes_for :company
 end

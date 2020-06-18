@@ -12,5 +12,6 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_uniqueness_of(:email) }
 
   it { is_expected.to belong_to(:company) }
+  it { is_expected.to have_many(:posts) }
   it { is_expected.to have_db_index(:company_id) }
 end
