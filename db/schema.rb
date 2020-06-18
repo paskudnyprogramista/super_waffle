@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_143103) do
+ActiveRecord::Schema.define(version: 2020_06_18_194346) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_143103) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "geo_id"
+    t.integer "orig_user_id"
     t.index ["geo_id"], name: "index_addresses_on_geo_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_143103) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "company_id"
+    t.integer "orig_user_id"
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
