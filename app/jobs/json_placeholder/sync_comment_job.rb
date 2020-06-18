@@ -5,7 +5,7 @@ module JsonPlaceholder
     queue_as :default
 
     def perform(comment_data)
-      JsonPlaceholder::CommentDataMapper.new.call(comment_data)
+      JsonPlaceholder::CommentService.populate(comment_data)
     end
   end
 end

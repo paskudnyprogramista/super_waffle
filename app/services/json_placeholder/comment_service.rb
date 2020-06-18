@@ -12,6 +12,9 @@ module JsonPlaceholder
         if comment
           comment.update!(build_attributes_for_update(mapped_comment_model))
         else
+          post = find_post(mapped_comment_model.orig_post_id)
+
+          mapped_comment_model.post = post
           mapped_comment_model.save!
         end
 
@@ -30,6 +33,10 @@ module JsonPlaceholder
 
       def find_comment(id)
         Comment.find_by(id: id)
+      end
+
+      def find_post(id)
+        Post.find_by(orig_post_id: id)
       end
     end
   end
