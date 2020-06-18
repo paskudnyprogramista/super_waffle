@@ -11,6 +11,7 @@ module JsonPlaceholder
       deep_symbolize_keys
 
       rename_keys userId: :orig_user_id
+      copy_keys id: :orig_post_id
 
       constructor_inject Post
     end

@@ -30,7 +30,7 @@ RSpec.describe JsonPlaceholder::PostDataMapper, type: :data_mapper do
     end
 
     it 'maintains data integrity in Post model' do
-      expect(post_model).to have_attributes(data)
+      expect(post_model).to have_attributes(data.except(:id))
     end
 
     it 'returns Post model' do

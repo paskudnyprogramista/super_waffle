@@ -34,7 +34,7 @@ RSpec.describe JsonPlaceholder::PostService, type: :service do
     end
 
     context 'when post exists' do
-      let!(:post) { create(:post, id: post_data[:id], title: 'Some Title') }
+      let!(:post) { create(:post, orig_post_id: 1, title: 'Some Title') }
 
       it 'returns Success' do
         expect(service).to be_a(Dry::Monads::Success)
