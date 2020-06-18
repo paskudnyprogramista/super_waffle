@@ -5,7 +5,7 @@ module JsonPlaceholder
     queue_as :default
 
     def perform(user_data)
-      Rails.logger.debug user_data
+      JsonPlaceholder::UserService.populate(user_data)
     end
   end
 end

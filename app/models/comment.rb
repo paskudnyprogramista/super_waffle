@@ -7,5 +7,7 @@ class Comment < ApplicationRecord
     validates :email
   end
 
-  belongs_to(:post)
+  belongs_to :post
+
+  accepts_nested_attributes_for :post
 end

@@ -9,4 +9,6 @@ class Post < ApplicationRecord
   belongs_to :user
 
   has_many :comments, dependent: :nullify
+
+  accepts_nested_attributes_for :user
 end

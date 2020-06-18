@@ -6,6 +6,7 @@ FactoryBot.define do
     username { Faker::Superhero.descriptor.downcase }
     email { Faker::Internet.unique.email }
     website { Faker::Internet.domain_name }
-    phone { Faker::PhoneNumber.phone }
+    phone { Faker::PhoneNumber.phone_number }
+    company
   end
 end

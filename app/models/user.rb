@@ -11,4 +11,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   belongs_to :company
+
+  accepts_nested_attributes_for :company
 end
