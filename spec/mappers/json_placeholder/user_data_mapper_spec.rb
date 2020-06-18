@@ -53,7 +53,7 @@ RSpec.describe JsonPlaceholder::UserDataMapper, type: :data_mapper do
     end
 
     it 'maintains data integrity in User model' do
-      expect(user_model).to have_attributes(data.except!(:company))
+      expect(user_model).to have_attributes(data.except!(:company, :id))
     end
 
     it 'returns User model' do

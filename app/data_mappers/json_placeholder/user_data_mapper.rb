@@ -10,6 +10,8 @@ module JsonPlaceholder
     define! do
       deep_symbolize_keys
 
+      rename_keys id: :orig_user_id
+
       map_value :company do
         rename_keys catchPhrase: :catchphrase
         constructor_inject Company
