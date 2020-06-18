@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_194346) do
+ActiveRecord::Schema.define(version: 2020_06_18_211313) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_06_18_194346) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "orig_user_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
