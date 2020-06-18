@@ -42,7 +42,7 @@ RSpec.describe JsonPlaceholder::UserService, type: :service do
     let(:user_data) { valid_user_data }
 
     context 'when user does not exists' do
-      it 'returns Success(:ok) ' do
+      it 'returns Success' do
         expect(service).to be_a(Dry::Monads::Success)
       end
     end
@@ -50,7 +50,7 @@ RSpec.describe JsonPlaceholder::UserService, type: :service do
     context 'when user exists' do
       let!(:user) { create(:user, name: 'name_before_change', email: user_data[:email]) }
 
-      it 'returns Success(:ok)' do
+      it 'returns Success' do
         expect(service).to be_a(Dry::Monads::Success)
       end
 

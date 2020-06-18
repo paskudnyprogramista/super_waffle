@@ -5,7 +5,7 @@ module JsonPlaceholder
     queue_as :default
 
     def perform(comment_data)
-      Rails.logger.debug comment_data
+      JsonPlaceholder::CommentDataMapper.new.call(comment_data)
     end
   end
 end

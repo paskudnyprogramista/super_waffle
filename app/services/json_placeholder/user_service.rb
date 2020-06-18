@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'dry/monads/all'
+require 'dry/monads/result'
 
 module JsonPlaceholder
   class UserService
@@ -8,7 +8,7 @@ module JsonPlaceholder
       include Dry::Monads[:result]
 
       def populate(user_data)
-        mapped_user_model = JsonPlaceholder::UserDataMapper.new.call(user_data)
+        mapped_user_model = map_user_data(user_data)
         user = find_user(mapped_user_model.email)
 
         if user
@@ -27,6 +27,10 @@ module JsonPlaceholder
         company_attributes = mapped_user_model.company.attributes
 
         user_attributes.merge(company_attributes: company_attributes).compact!
+      end
+
+      def map_user_data(user_data)
+        JsonPlaceholder::UserDataMapper.new.call(user_data)
       end
 
       def find_user(email)

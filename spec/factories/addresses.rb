@@ -6,5 +6,7 @@ FactoryBot.define do
     suite { Faker::Address.building_number }
     city { Faker::Address.city }
     zip { Faker::Address.zip }
+    user
+    geo
   end
 end
