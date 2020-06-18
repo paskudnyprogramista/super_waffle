@@ -2,8 +2,9 @@
 
 FactoryBot.define do
   factory :comment do
-    name { Faker::TvShows::Simpsons.episode_title }
+    name { Faker::TvShows::Simpsons.location }
     body { Faker::TvShows::Simpsons.quote }
     email { Faker::Internet.unique.email }
+    post
   end
 end
