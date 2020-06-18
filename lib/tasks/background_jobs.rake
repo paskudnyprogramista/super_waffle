@@ -14,9 +14,8 @@ namespace :background_jobs do
       address_data = user_data.extract!(:address).fetch(:address, {})
       address_data.merge!(orig_user_id: user_data.fetch(:id))
 
-      # TODO: change perform_now, to perform_later
-      JsonPlaceholder::SyncUserJob.perform_now(user_data)
-      JsonPlaceholder::SyncAddressJob.perform_now(address_data)
+      JsonPlaceholder::SyncUserJob.perform_later(user_data)
+      JsonPlaceholder::SyncAddressJob.perform_later(address_data)
     end
 
     Rails.logger.info "Scheduled #{users_data.count} jobs."
@@ -30,8 +29,7 @@ namespace :background_jobs do
     # TODO: Impl module responsible for handling big sized array
     posts_data = JsonPlaceholder::ApiClient.new.posts
     posts_data.each do |post_data|
-      # TODO: change perform_now, to perform_later
-      JsonPlaceholder::SyncPostJob.perform_now(post_data)
+      JsonPlaceholder::SyncPostJob.perform_later(post_data)
     end
 
     Rails.logger.info "Scheduled #{posts_data.count} jobs."
@@ -45,8 +43,7 @@ namespace :background_jobs do
     # TODO: Impl module responsible for handling big sized array
     comments_data = JsonPlaceholder::ApiClient.new.comments
     comments_data.each do |comment_data|
-      # TODO: change perform_now, to perform_later
-      JsonPlaceholder::SyncCommentJob.perform_now(comment_data)
+      JsonPlaceholder::SyncCommentJob.perform_later(comment_data)
     end
 
     Rails.logger.info "Scheduled #{comments_data.count} jobs."
