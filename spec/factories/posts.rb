@@ -2,7 +2,8 @@
 
 FactoryBot.define do
   factory :post do
-    title { Faker::TvShows::Simpsons.episode_title }
+    title { Faker::TvShows::Simpsons.location }
     body { Faker::TvShows::Simpsons.quote }
+    user
   end
 end

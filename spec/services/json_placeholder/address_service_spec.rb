@@ -46,7 +46,7 @@ RSpec.describe JsonPlaceholder::AddressService, type: :service do
     end
 
     context 'when address exists' do
-      let!(:address) { create(:address, id: address_data[:id]) }
+      let!(:address) { create(:address, id: address_data[:id], suite: 'Apt. 1') }
 
       it 'returns Success' do
         expect(service).to be_a(Dry::Monads::Success)
