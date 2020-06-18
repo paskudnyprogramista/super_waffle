@@ -36,15 +36,15 @@ Te test your app:
 In order to start synchronization between Super Waffle and JSONPlaecholder, you need to add following cron jobs to your crontab:
 
 ```bash
-0 * * * * /bin/bash -l -c 'cd /super_waffle && RAILS_ENV=<environment> bundle exec rake background_jobs:schedule_jsonplaceholder_users_sync'
+*/30 * * * * /bin/bash -l -c 'cd /super_waffle && RAILS_ENV=<environment> bundle exec rake background_jobs:schedule_jsonplaceholder_users_sync'
 ```
 
 ```bash
-0 * * * * /bin/bash -l -c 'cd /super_waffle && RAILS_ENV=<environment> bundle exec rake background_jobs:schedule_jsonplaceholder_posts_sync'
+*/60 * * * * /bin/bash -l -c 'cd /super_waffle && RAILS_ENV=<environment> bundle exec rake background_jobs:schedule_jsonplaceholder_posts_sync'
 ```
 
 ```bash
-0 * * * * /bin/bash -l -c 'cd /super_waffle && RAILS_ENV=<environment> bundle exec rake background_jobs:schedule_jsonplaceholder_comments_sync'
+*/90 * * * * /bin/bash -l -c 'cd /super_waffle && RAILS_ENV=<environment> bundle exec rake background_jobs:schedule_jsonplaceholder_comments_sync'
 ```
 
 Above examples will be run every 1 hour, but you can change that if you choose to.
