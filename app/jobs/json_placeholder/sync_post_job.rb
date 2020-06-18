@@ -5,7 +5,7 @@ module JsonPlaceholder
     queue_as :default
 
     def perform(post_data)
-      JsonPlaceholder::PostDataMapper.new.call(post_data)
+      JsonPlaceholder::PostService.populate(post_data)
     end
   end
 end

@@ -12,6 +12,9 @@ module JsonPlaceholder
         if post
           post.update!(build_attributes_for_update(mapped_post_model))
         else
+          user = find_user(mapped_post_model.orig_user_id)
+
+          mapped_post_model.user = user
           mapped_post_model.save!
         end
 
@@ -30,6 +33,10 @@ module JsonPlaceholder
 
       def find_post(id)
         Post.find_by(id: id)
+      end
+
+      def find_user(id)
+        User.find_by(orig_user_id: id)
       end
     end
   end

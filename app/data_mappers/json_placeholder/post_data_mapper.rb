@@ -10,6 +10,8 @@ module JsonPlaceholder
     define! do
       deep_symbolize_keys
 
+      rename_keys userId: :orig_user_id
+
       constructor_inject Post
     end
   end
