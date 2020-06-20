@@ -1,1 +1,2 @@
 --require spec_helper
+--require integrations/associate_jsonplaceholder_resource_spec
