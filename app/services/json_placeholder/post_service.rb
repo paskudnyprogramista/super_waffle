@@ -8,13 +8,13 @@ module JsonPlaceholder
       def populate(post_data)
         mapped_post_model = map_post_data(post_data)
         post = find_post(mapped_post_model.id)
+        user = find_user(mapped_post_model.orig_user_id)
+
+        mapped_post_model.user = user
 
         if post
           post.update!(build_attributes_for_update(mapped_post_model))
         else
-          user = find_user(mapped_post_model.orig_user_id)
-
-          mapped_post_model.user = user
           mapped_post_model.save!
         end
 

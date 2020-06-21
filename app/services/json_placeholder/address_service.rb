@@ -8,18 +8,17 @@ module JsonPlaceholder
       include Dry::Monads[:result]
 
       # TODO: Refactor:
-      # - We need to bind address by orig_address_id which is taken from external data
       # - Move to base class
       def populate(address_data)
         mapped_address_model = map_address_data(address_data)
         address = find_address(mapped_address_model.orig_user_id)
+        user = find_user(mapped_address_model.orig_user_id)
+
+        mapped_address_model.user = user
 
         if address
           address.update!(build_attributes_for_update(mapped_address_model))
         else
-          user = find_user(mapped_address_model.orig_user_id)
-
-          mapped_address_model.user = user
           mapped_address_model.save!
         end
 

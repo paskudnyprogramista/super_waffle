@@ -8,7 +8,7 @@ class Address < ApplicationRecord
     validates :zip
   end
 
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :geo
 
   accepts_nested_attributes_for :user, :geo

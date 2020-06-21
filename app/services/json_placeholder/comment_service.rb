@@ -8,13 +8,13 @@ module JsonPlaceholder
       def populate(comment_data)
         mapped_comment_model = map_comment_data(comment_data)
         comment = find_comment(mapped_comment_model.id)
+        post = find_post(mapped_comment_model.orig_post_id)
+
+        mapped_comment_model.post = post
 
         if comment
           comment.update!(build_attributes_for_update(mapped_comment_model))
         else
-          post = find_post(mapped_comment_model.orig_post_id)
-
-          mapped_comment_model.post = post
           mapped_comment_model.save!
         end
 
